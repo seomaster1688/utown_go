@@ -19,17 +19,9 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         const link = document.getElementById('redirect-link');
-        const noscriptLink = document.getElementById('noscript-link');
-        const countdown = document.getElementById('countdown');
 
-        // 更新畫面上的連結與倒數
         link.href = target;
         link.textContent = target;
-
-
-        let remaining = DELAY_SECONDS;
-        countdown.textContent = remaining;
-
 
         window.location.replace(target);
 

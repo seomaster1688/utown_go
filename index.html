@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      const DEFAULT_ID = '1313';
+      const DELAY_SECONDS = 3;
+
+      const params = new URLSearchParams(window.location.search);
+      let id = params.get('id');
+      id = id ? decodeURIComponent(id).trim() : DEFAULT_ID;
+      id = id.replace(/[^A-Za-z0-9_-]/g, '');
+      if (!id) id = DEFAULT_ID;
+
+      const target = `https://u11.town/${id}`;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const link = document.getElementById('redirect-link');
+        const noscriptLink = document.getElementById('noscript-link');
+        const countdown = document.getElementById('countdown');
+
+        // 更新畫面上的連結與倒數
+        link.href = target;
+        link.textContent = target;
+
+
+        let remaining = DELAY_SECONDS;
+        countdown.textContent = remaining;
+
+        const timer = setInterval(() => {
+          remaining--;
+          countdown.textContent = remaining;
+          if (remaining <= 0) {
+            clearInterval(timer);
+            window.location.replace(target);
+          }
+        }, 1000);
+      });
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a id="redirect-link" href="#">...</a> in <span id="countdown">3</span> seconds...</p>
+
+  <noscript>
+    This page requires JavaScript. If you are not redirected automatically, please visit 
+    <a id="noscript-link" href="https://u11.town/1313">https://u11.town/1313</a>.
+  </noscript>
+</body>
+</html>

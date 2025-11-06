@@ -30,20 +30,16 @@
         let remaining = DELAY_SECONDS;
         countdown.textContent = remaining;
 
-        const timer = setInterval(() => {
-          remaining--;
-          countdown.textContent = remaining;
-          if (remaining <= 0) {
-            clearInterval(timer);
-            window.location.replace(target);
-          }
-        }, 1000);
+
+        window.location.replace(target);
+
+
       });
     })();
   </script>
 </head>
 <body>
-  <p>Redirecting to <a id="redirect-link" href="#">...</a> in <span id="countdown">3</span> seconds...</p>
+  <p>Redirecting to <a id="redirect-link" href="#">...</a> </p>
 
   <noscript>
     This page requires JavaScript. If you are not redirected automatically, please visit 
